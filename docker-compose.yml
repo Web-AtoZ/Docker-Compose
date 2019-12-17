@@ -20,7 +20,7 @@ services:
       dockerfile: ./django/Dockerfile
     environment:
       - DJANGO_DEBUG=True
-- DJANGO_DB_HOST=db
+      - DJANGO_DB_HOST=db
       - DJANGO_DB_PORT=5432
       - DJANGO_DB_NAME=sampledb
       - DJANGO_DB_USERNAME=sampleuser
@@ -45,4 +45,4 @@ services:
     ports:
       - "8080:8080"
     volumes:
-      - ./spring:/home/spring
+      - ./Spring:/home/spring
