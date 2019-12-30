@@ -17,7 +17,7 @@ services:
   django:
     build:
       context: .
-      dockerfile: ./django/Dockerfile
+      dockerfile: ./Django/Dockerfile
     environment:
       - DJANGO_DEBUG=True
       - DJANGO_DB_HOST=db
@@ -36,12 +36,12 @@ services:
         python manage.py runserver 0:8100
     restart: always
     volumes:
-      - ./django:/home/django/
+      - ./Django:/home/django/
 
   springboot:
     build:
       context: .
-      dockerfile: ./spring/Dockerfile
+      dockerfile: ./Spring/Dockerfile
     ports:
       - "8080:8080"
     volumes:
