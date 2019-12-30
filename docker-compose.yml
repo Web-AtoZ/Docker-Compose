@@ -46,3 +46,10 @@ services:
       - "8080:8080"
     volumes:
       - ./Spring:/home/spring
+
+  nodejs:
+    image: webatoz/node-docker
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./Nodejs-vue:/home/nodejs/
