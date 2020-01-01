@@ -1,4 +1,30 @@
-docker compose up
+### rabbitmq가 사용하는 포트
+
+```
+– 5672 : AMQP 포트 //  AMQP 정의 기능: 메시지 지향, 큐잉, 라우팅, 신뢰성, 보안
+– 15672 : 웹 관리 콘솔
+– 4369 : EPMD (Erlang Port Mapper Daemon) // Erlang: 병령 프로그래밍 언어
+– 1883 : MQTT 접속 포트 // Message Queuing Telemetry Transport - G/W용 프로토콜 (모바일 특화 프로토콜) 
+                       // 참고
+                       // http://woowabros.github.io/experience/2017/08/11/ost_mqtt_broker.html
+                       // https://www.rabbitmq.com/mqtt.html
+
+```
+![MQTT](https://jgtonys.github.io/public/img/mqtt/intro.png)
+
+
+### rabbitmq 계정
+
+```
+> default guest/guest
+
+1) http://localhost:15672/ 에 guest/guest 로 로그인
+2) Admin > Users 메뉴로 이동하여 계정 등록
+3) Admin 계정 등록
+
+```
+
+### docker compose up
 
 ```powershell
 $ docker ps
@@ -29,7 +55,7 @@ CONTAINER ID        IMAGE                      COMMAND                  CREATED 
 
 
 
-## message push
+### message push
 
 ```java
 package com.kongjung.rabbitmq;
