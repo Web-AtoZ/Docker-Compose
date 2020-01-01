@@ -1,5 +1,12 @@
 rabbitmq 이미지 올리기
 
+<br>
+
+저장소 create 버튼 없어서 일단 비어있는 저장소에 올림ㅎ; -> [저장소](https://hub.docker.com/repository/docker/webatoz/webatoz)
+
+<br>
+
+
 ```powershell
 D:> docker image pull rabbitmq:3.8.0-management
 
@@ -50,7 +57,7 @@ rabbitmq: digest: sha256:1bc0f71e474748dfd9c58d6e633953785d0141ec269327fa1ecdfb5
 
 확인
 
-<https://hub.docker.com/repository/docker/webatoz/webatoz>
+https://hub.docker.com/repository/docker/webatoz/webatoz
 
 ![1577881200975](assets/1577881200975.png)
 
