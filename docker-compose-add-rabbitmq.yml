@@ -1,0 +1,64 @@
+version: '3'
+
+volumes:
+  django_sample_db_dev: {}
+
+services:
+  db:
+    image: webatoz/postgres-docker
+    volumes:
+      - django_sample_db_dev:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=sampledb
+      - POSTGRES_USER=sampleuser
+      - POSTGRES_PASSWORD=samplesecret
+      - POSTGRES_INITDB_ARGS=--encoding=UTF-8
+
+  django:
+    build:
+      context: .
+      dockerfile: ./Django/Dockerfile
+    environment:
+      - DJANGO_DEBUG=True
+      - DJANGO_DB_HOST=db
+      - DJANGO_DB_PORT=5432
+      - DJANGO_DB_NAME=sampledb
+      - DJANGO_DB_USERNAME=sampleuser
+      - DJANGO_DB_PASSWORD=samplesecret
+      - DJANGO_SECRET_KEY=dev_secret_key
+    ports:
+      - "8100:8100"
+    command:
+      - bash
+      - -c
+      - |
+        python manage.py migrate
+        python manage.py runserver 0:8100
+    restart: always
+    # volumes:
+    #   - ./Django:/home/django/
+
+  springboot:
+    build:
+      context: .
+      dockerfile: ./Spring/Dockerfile
+    ports:
+      - "8080:8080"
+    # volumes:
+    #   - ./Spring:/home/spring
+
+  nodejs:
+    image: webatoz/node-docker
+    ports:
+      - "3000:3000"
+    # volumes:
+    #   - ./Nodejs-vue:/home/nodejs/
+
+
+  rabbitmq:
+    image: webatoz/webatoz:rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    # volumes:
+    #   - ./Rabbitmq:/home/rabbitmq
